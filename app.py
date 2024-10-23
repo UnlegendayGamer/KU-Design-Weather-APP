@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import api_request as request
-import matplotlib.pyplot as plt
 
 dataframe = None
 uploaded_file = st.file_uploader("Choose a file")
@@ -21,7 +19,8 @@ if uploaded_file is not None:
     
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_csv("weatherdata2.csv")
-    # st.dataframe(dataframe)
+    print(dataframe)
+    st.dataframe(dataframe)
     
     flipped_df = dataframe.T
     flipped_df.columns = flipped_df.iloc[0]
@@ -30,10 +29,11 @@ if uploaded_file is not None:
     st.dataframe(flipped_df)
 
     option = st.selectbox(
-        "What data would you like to compare?",
+        "What data would you like to compare",
         ("weather_code", "temperature_max", "temperature_min", "precipitation_sum", "wind_speed_max", "precipitation_probability_max"),
     )
 
+<<<<<<< HEAD
     st.bar_chart(data=flipped_df, x="index", y=option, color="#40242c", stack=False)
     
     df = None
@@ -84,3 +84,6 @@ if uploaded_file is not None:
     else:
         max_value = flipped_df[choice].max()
     st.write("In the given data, the " + user_choice + " was " + str(flipped_df[user_choice].max()) + ", while the " + user_choice + " at latitude " + str(latitude) + " longitude " + str(longitude) + ", was " + str(max_value))
+=======
+    st.bar_chart(data=flipped_df, x="index", y=option, color="#40242c", stack=False)
+>>>>>>> parent of dbf16e3 (completed chellenges 1 and 2)
